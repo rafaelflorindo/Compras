@@ -2,6 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
+import Home from './componentes/Home';
 import CadastroCompra from './componentes/Compras/CadastroCompra';
 import EditarCompra from './componentes/Compras/EditarCompra';
 import Compra from './componentes/Compras/Index';
@@ -18,7 +20,7 @@ import CadastroEstabelecimento from './componentes/Estabelecimento/CadastroEstab
 import EditarEstabelecimento from './componentes/Estabelecimento/EditarEstabelecimento';
 import Estabelecimento from './componentes/Estabelecimento/Index';
 
-import LoginUsuario from './componentes/Autenticacao/LoginUsuario'; // seu componente de login
+import LoginUsuario from './componentes/Autenticacao/index'; // seu componente de login
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: true }}>
-        
+        <Stack.Screen name="Home" component={Home} />
         {/* Autenticação */}
         <Stack.Screen name="Login" component={LoginUsuario} />
 
