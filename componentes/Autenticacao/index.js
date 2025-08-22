@@ -1,94 +1,101 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from "react-native";
 
-const Home = () => {
-  const navigation = useNavigation();
+const LoginUsuario = ({ navigation }) => {
+  const [email, setEmail] = useState("admin@email.com");
+  const [senha, setSenha] = useState("123456");
+
+  const realizarLogin = () => {
+    if (!email || !senha) {
+      Alert.alert("Erro", "Por favor, preencha email e senha.");
+      return;
+    }
+
+    // Simulação de login (aqui você validaria com backend futuramente)
+    if (email === "admin@email.com" && senha === "123456") {
+      Alert.alert("Login realizado com sucesso!");
+      navigation.navigate('Home');
+    } else {
+      Alert.alert("Erro", "Credenciais inválidas.");
+    }
+
+    // Limpa os campos (opcional)
+    setEmail("");
+    setSenha("");
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Menu</Text>
+      <Text style={styles.title}>Login</Text>
 
-      {/* Autenticação */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-        <Text style={styles.buttonText}>Login</Text>
+      <Text style={styles.label}>Email:</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite seu email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+
+      <Text style={styles.label}>Senha:</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Digite sua senha"
+        value={senha}
+        onChangeText={setSenha}
+        secureTextEntry
+      />
+    
+      <TouchableOpacity style={styles.button} onPress={realizarLogin}>
+        <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
-
-      {/* Usuário */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Usuario')}>
-        <Text style={styles.buttonText}>Usuários</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroUsuario')}>
-        <Text style={styles.buttonText}>Cadastrar Usuário</Text>
-      </TouchableOpacity>
-
-      {/* Produto */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Produto')}>
-        <Text style={styles.buttonText}>Produtos</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroProduto')}>
-        <Text style={styles.buttonText}>Cadastrar Produto</Text>
-      </TouchableOpacity>
-
-      {/* Estabelecimento */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Estabelecimento')}>
-        <Text style={styles.buttonText}>Estabelecimentos</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroEstabelecimento')}>
-        <Text style={styles.buttonText}>Cadastrar Estabelecimento</Text>
-      </TouchableOpacity>
-
-      {/* Compra */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Compra')}>
-        <Text style={styles.buttonText}>Compras</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroCompra')}>
-        <Text style={styles.buttonText}>Cadastrar Compra</Text>
-      </TouchableOpacity>
-
     </View>
   );
 };
 
+export default LoginUsuario;
+
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width:'100%',
     padding: 16,
-    backgroundColor: '#F5F9FF',
+    backgroundColor: "#F5F9FF",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#1976D2',
+    fontWeight: "bold",
+    color: "#1976D2",
     marginBottom: 16,
   },
   label: {
-    color: '#0D47A1',
+    color: "#0D47A1",
     marginTop: 12,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#BBDEFB',
+    borderColor: "#BBDEFB",
     borderRadius: 5,
     padding: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     marginTop: 4,
   },
   button: {
-    marginTop: 12,
-    backgroundColor: '#1976D2',
+    marginTop: 24,
+    backgroundColor: "#1976D2",
     padding: 12,
     borderRadius: 5,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonText: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontWeight: "bold",
   },
 });
-
-export default Home;

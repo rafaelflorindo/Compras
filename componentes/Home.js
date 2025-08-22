@@ -1,71 +1,94 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 20, marginBottom: 10 }}>Menu</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Menu</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text>Login</Text>
+      {/* Autenticação */}
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
       {/* Usuário */}
-      <TouchableOpacity onPress={() => navigation.navigate('Usuario')}>
-        <Text>Usuários</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Usuario')}>
+        <Text style={styles.buttonText}>Usuários</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
-        <Text>Cadastrar Usuário</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('EditarUsuario')}>
-        <Text>Editar Usuário</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroUsuario')}>
+        <Text style={styles.buttonText}>Cadastrar Usuário</Text>
       </TouchableOpacity>
 
       {/* Produto */}
-      <TouchableOpacity onPress={() => navigation.navigate('Produto')}>
-        <Text>Produtos</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Produto')}>
+        <Text style={styles.buttonText}>Produtos</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('CadastroProduto')}>
-        <Text>Cadastrar Produto</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('EditarProduto')}>
-        <Text>Editar Produto</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroProduto')}>
+        <Text style={styles.buttonText}>Cadastrar Produto</Text>
       </TouchableOpacity>
 
       {/* Estabelecimento */}
-      <TouchableOpacity onPress={() => navigation.navigate('Estabelecimento')}>
-        <Text>Estabelecimentos</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Estabelecimento')}>
+        <Text style={styles.buttonText}>Estabelecimentos</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('CadastroEstabelecimento')}>
-        <Text>Cadastrar Estabelecimento</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate('EditarEstabelecimento')}>
-        <Text>Editar Estabelecimento</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroEstabelecimento')}>
+        <Text style={styles.buttonText}>Cadastrar Estabelecimento</Text>
       </TouchableOpacity>
 
       {/* Compra */}
-      <TouchableOpacity onPress={() => navigation.navigate('Compra')}>
-        <Text>Compras</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Compra')}>
+        <Text style={styles.buttonText}>Compras</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('CadastroCompra')}>
-        <Text>Cadastrar Compra</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastroCompra')}>
+        <Text style={styles.buttonText}>Cadastrar Compra</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('EditarCompra')}>
-        <Text>Editar Compra</Text>
-      </TouchableOpacity>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    padding: 16,
+    backgroundColor: '#F5F9FF',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1976D2',
+    marginBottom: 16,
+  },
+  label: {
+    color: '#0D47A1',
+    marginTop: 12,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#BBDEFB',
+    borderRadius: 5,
+    padding: 10,
+    backgroundColor: '#FFFFFF',
+    marginTop: 4,
+  },
+  button: {
+    marginTop: 12,
+    backgroundColor: '#1976D2',
+    padding: 12,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+});
 
 export default Home;
